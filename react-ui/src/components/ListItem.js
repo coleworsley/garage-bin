@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 export default class ListItem extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showDetail: false,
     }
@@ -15,6 +15,18 @@ export default class ListItem extends Component {
       <div className={`listItem ${listItemStatus}`}>
         <p>{this.props.name}</p>
         <p>{this.props.description}</p>
+        <select className='list-item-cleanliness'
+          value={this.props.cleanliness}
+          name='list-item-cleanliness'
+          onChange={(e) => this.props.handleListItemChange(
+            this.props.id,
+            { cleanliness: e.target.value }
+          )}
+          value={this.state.cleanliness}>
+            <option value='Sparkling'>Sparkling</option>
+            <option value='Dusty'>Dusty</option>
+            <option value='Rancid'>Rancid</option>
+        </select>
         <p>{this.props.cleanliness}</p>
       </div>
     )
