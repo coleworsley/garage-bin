@@ -34,7 +34,7 @@ module.exports = {
     },
     seeds: {
       directory: './db/seeds/prod',
-    }
+    },
     useNullAsDefault: true,
   },
 };
