@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import GarageDoor from './GarageDoor';
+import InputContainer from './InputContainer';
+import List from './List';
 import './App.css';
 
+const initialState = {
+  items: [],
+  error: '',
+}
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = initialState;
+  }
+
+
   componentDidMount() {
     fetch('/api/v1/garage')
       .then(res => res.json())
-      .then(garage => console.log(garage))
-      .catch(error => console.log(error))
+      .then(items => {
+        this.setState({ items, error: '' })
+      })
+      .catch(error => {
+        this.setState({ error })
+      })
   }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Hello World</h1>
+        <main>
+          <GarageDoor />
+          <InputContainer />
+          <List items={this.state.items}/>
+        </main>
+
       </div>
     );
   }
