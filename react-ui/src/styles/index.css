@@ -9,6 +9,11 @@ body {
   min-height: 100vh;
 }
 
+header,
+main {
+  padding: 25px;
+}
+
 header {
   background-color: #000A13;
   padding: 25px;
@@ -26,4 +31,12 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   height: calc(100vh - 80px);
+}
+
+.input-container {
+  background-color: rgba(0, 10, 19, 0.7);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 5px;
 }
