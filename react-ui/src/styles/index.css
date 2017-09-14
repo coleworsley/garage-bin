@@ -30,10 +30,29 @@ header {
 
 main {
   background-image: url('../assets/tool-shed.jpg');
+  position: relative;
+}
+
+main,
+.garage-door {
+  height: calc(100vh - 80px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 80px);
+}
+
+.garage-door {
+  background-image: url('../assets/garage-door.jpg');
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  transition: all 1s ease;
+}
+
+.garage-door.open {
+  height: 0;
 }
 
 .input-container {
