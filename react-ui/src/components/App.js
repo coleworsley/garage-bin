@@ -3,7 +3,6 @@ import GarageDoor from './GarageDoor';
 import InputContainer from './InputContainer';
 import List from './List';
 import { GARAGE_ENDPOINT } from '../utils/constants';
-// import { getItems } from '../helpers';
 
 const initialState = {
   items: [],
