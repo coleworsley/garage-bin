@@ -29,6 +29,15 @@ app.get('/api/v1/garage', (req, res) => {
 })
 
 app.post('/api/v1/garage', (req, res) => {
+
+  for (const requiredParam of ['name', 'description', 'cleanliness']) {
+    if (!req.body[requiredParam]) {
+      return res.status(422).json({
+        error: `Missing required parameter ${requiredParam}`,
+      });
+    }
+  }
+
   db('garage')
     .insert(req.body, '*')
     .then((item) => {
