@@ -63,8 +63,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Hello World</h1>
+      <div className='App'>
+        <header>
+          <h1 className='title'>Garage Bin</h1>
+        </header>
         <main>
           <GarageDoor />
           <InputContainer
