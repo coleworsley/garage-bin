@@ -57,7 +57,6 @@ app.post('/api/v1/garage', checkCleanliness, (req, res) => {
 })
 
 app.patch('/api/v1/garage/:id', checkCleanliness, (req, res) => {
-  console.log(req.body);
   db('garage')
     .where('id', req.params.id)
     .update(req.body, '*')
