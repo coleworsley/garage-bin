@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 const initialState = {
-  garageOpen: false,
   items: [],
+  error: '',
 }
 
 class App extends Component {
@@ -17,9 +17,11 @@ class App extends Component {
     fetch('/api/v1/garage')
       .then(res => res.json())
       .then(items => {
-        this.setState({ items })
+        this.setState({ items, error: '' })
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        this.setState({ error })
+      })
   }
   render() {
     return (
