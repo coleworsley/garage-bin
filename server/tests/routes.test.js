@@ -83,5 +83,22 @@ describe('API Routes', () => {
           done();
         });
     });
+
+    it('SADPATH: should return an error if not all the required params are met', (done) => {
+      chai.request(server)
+        .post('/api/v1/garage')
+        .send({
+          name: 'Bike',
+          cleanliness: 'Sparkling',
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.should.be.a('object');
+          res.should.be.json;
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Missing required parameter description');
+          done();
+        });
+    });
   });
 });
