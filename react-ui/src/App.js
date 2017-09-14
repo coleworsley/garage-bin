@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 const initialState = {
-  
+  garageOpen: false,
+  items: [],
 }
 
 class App extends Component {
   constructor() {
+    super();
     this.state = initialState;
   }
 
@@ -14,7 +16,9 @@ class App extends Component {
   componentDidMount() {
     fetch('/api/v1/garage')
       .then(res => res.json())
-      .then(garage => console.log(garage))
+      .then(items => {
+        this.setState({ items })
+      })
       .catch(error => console.log(error))
   }
   render() {
