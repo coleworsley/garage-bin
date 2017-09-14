@@ -70,7 +70,7 @@ describe('API Routes', () => {
           cleanliness: 'Sparkling',
         })
         .end((err, res) => {
-          res.should.have.status(200);
+          res.should.have.status(201);
           res.body.should.be.a('object');
           res.should.be.json;
           res.body.should.have.property('id');

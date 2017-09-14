@@ -21,10 +21,23 @@ app.get('/api/v1/garage', (req, res) => {
   db('garage')
     .select()
     .then((garage) => {
-      res.status(200).json(garage)})
-    .catch(error => {
-      res.status(404).json({ error })
+      res.status(200).json(garage);
     })
+    .catch((error) => {
+      res.status(404).json({ error });
+    })
+})
+
+app.post('/api/v1/garage', (req, res) => {
+  db('garage')
+    .insert(req.body, '*')
+    .then((item) => {
+      res.status(201).json(item[0]);
+    })
+    .catch((error) => {
+      res.status(404).json({ error });
+    })
+
 })
 
 app.listen(PORT, () => {
