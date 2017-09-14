@@ -15,6 +15,7 @@ class App extends Component {
     super();
     this.state = initialState;
     this.postItem = this.postItem.bind(this);
+    this.handleListItemChange = this.handleListItemChange.bind(this);
   }
 
   postItem(body) {
@@ -24,7 +25,7 @@ class App extends Component {
       body: JSON.stringify(body),
     })
     .then(res => res.json())
-    .then(item => {
+    .then((item) => {
       const { items } = this.state;
       this.setState({ items: [...items, item], error: '' })
     })
@@ -32,6 +33,29 @@ class App extends Component {
       this.setState({ error });
     })
   };
+
+  handleListItemChange(id, cleanliness) {
+    fetch(`api/v1/garage/${id}`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'PATCH',
+      body: JSON.stringify(cleanliness),
+    })
+    .then((res) => res.json())
+    .then((item) => {
+      const { items } = this.state;
+      const newItems = items.map((e) => {
+        if (e.id === item.id) {
+          e.cleanliness = item.cleanliness;
+        }
+        return e;
+      });
+
+      this.setState({ items: newItems, error: '' });
+    })
+    .catch((error) => {
+      this.setState({ error })
+    })
+  }
 
   componentDidMount() {
     getItems(this);
@@ -43,8 +67,13 @@ class App extends Component {
         <h1>Hello World</h1>
         <main>
           <GarageDoor />
-          <InputContainer postItem={this.postItem} />
-          <List items={this.state.items} />
+          <InputContainer
+            postItem={this.postItem}
+          />
+          <List
+            items={this.state.items}
+            handleListItemChange={this.handleListItemChange}
+          />
         </main>
 
       </div>
