@@ -17,6 +17,16 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
 
+app.get('/api/v1/garage', (req, res) => {
+  db('garage')
+    .select()
+    .then((garage) => {
+      res.status(200).json(garage)})
+    .catch(error => {
+      res.status(404).json({ error })
+    })
+})
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
