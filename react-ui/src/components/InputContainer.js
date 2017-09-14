@@ -32,23 +32,25 @@ export default class InputContainer extends Component {
           value={this.state.name}
           onChange={(e) => this.handleChange(e)}/>
         <input id='description-input'
-          type='text'
+          type='textarea'
           placeholder='description'
           name='description'
           value={this.state.description}
           onChange={(e) => this.handleChange(e)}/>
-        <select id='cleanliness-input'
-          name='cleanliness'
-          onChange={(e) => this.handleChange(e)}
-          value={this.state.cleanliness}>
+        <div className='select-box'>
+          <select id='cleanliness-input'
+            name='cleanliness'
+            onChange={(e) => this.handleChange(e)}
+            value={this.state.cleanliness}>
             <option value='Sparkling'>Sparkling</option>
             <option value='Dusty'>Dusty</option>
             <option value='Rancid'>Rancid</option>
-        </select>
-        <button id='submit-input'
-          onClick={() => this.handleClick()}>
-          Submit
-        </button>
+          </select>
+          <button id='submit-input'
+            onClick={() => this.handleClick()}>
+            Submit
+          </button>
+        </div>
       </div>
     )
   }
