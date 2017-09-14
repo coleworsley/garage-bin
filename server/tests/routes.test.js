@@ -100,5 +100,22 @@ describe('API Routes', () => {
           done();
         });
     });
+
+    it('SADPATH: should return an error if cleanliness is not one of the required keywords', (done) => {
+      chai.request(server)
+        .post('/api/v1/garage')
+        .send({
+          name: 'Bike',
+          description: 'It has 2 wheels',
+          cleanliness: 'awef',
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.should.be.a('object');
+          res.should.be.json;
+          res.body.should.have.property('error');
+          res.body.error.should.equal('awef is not a valid cleanliness. Please use one of the following: Sparkling, Dusty, or Rancid');
+        })
+    })
   });
 });
