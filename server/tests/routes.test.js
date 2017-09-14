@@ -152,24 +152,24 @@ describe('API Routes', () => {
           res.should.have.status(404);
           res.body.should.be.a('object');
           res.should.be.json;
-          res.body.should.have.property('message');
-          res.body.message.should.equal('invalid id')
+          res.body.should.have.property('error');
+          res.body.error.should.equal('invalid id')
           done();
         });
     });
 
-    it.skip('SADPATH should return an error if the cleanliness doesn\'t exist', (done) => {
+    it('SADPATH should return an error if the cleanliness doesn\'t exist', (done) => {
       chai.request(server)
         .patch('/api/v1/garage/3')
         .send({
-          cleanliness: 'awefawefawefw',
+          cleanliness: 'awef',
         })
         .end((err, res) => {
           res.should.have.status(422);
           res.body.should.be.a('object');
           res.should.be.json;
           res.body.should.have.property('error');
-          res.body.error.should.equal('description')
+          res.body.error.should.equal('awef is not a valid cleanliness. Please use one of the following: Sparkling, Dusty, or Rancid')
           done();
         });
     });
