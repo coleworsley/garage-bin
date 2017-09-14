@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
 
-
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
