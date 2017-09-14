@@ -115,6 +115,7 @@ describe('API Routes', () => {
           res.should.be.json;
           res.body.should.have.property('error');
           res.body.error.should.equal('awef is not a valid cleanliness. Please use one of the following: Sparkling, Dusty, or Rancid');
+          done();
         })
     })
   });

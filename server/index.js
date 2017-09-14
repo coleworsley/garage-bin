@@ -38,6 +38,13 @@ app.post('/api/v1/garage', (req, res) => {
     }
   }
 
+  const cleanliness = ['Sparkling', 'Dusty', 'Rancid'];
+  if (!cleanliness.includes(req.body.cleanliness)) {
+    return res.status(422).json({
+      error: `${req.body.cleanliness} is not a valid cleanliness. Please use one of the following: Sparkling, Dusty, or Rancid`
+    })
+  }
+
   db('garage')
     .insert(req.body, '*')
     .then((item) => {
