@@ -3,7 +3,7 @@ import GarageDoor from './GarageDoor';
 import InputContainer from './InputContainer';
 import List from './List';
 import { GARAGE_ENDPOINT } from '../utils/constants';
-import { getItems } from '../helpers';
+// import { getItems } from '../helpers';
 
 const initialState = {
   items: [],
@@ -14,9 +14,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
+    this.getItems = this.getItems.bind(this);
     this.postItem = this.postItem.bind(this);
     this.handleListItemChange = this.handleListItemChange.bind(this);
   }
+
+  getItems() {
+    fetch(GARAGE_ENDPOINT)
+      .then(res => res.json())
+      .then(items => {
+        this.sortList(items)
+      })
+      .catch(error => {
+        this.setState({ error })
+      })
+  }
+
 
   postItem(body) {
     fetch(GARAGE_ENDPOINT, {
@@ -27,7 +40,7 @@ class App extends Component {
     .then(res => res.json())
     .then((item) => {
       const { items } = this.state;
-      this.setState({ items: [...items, item], error: '' })
+      this.sortList([...items, item])
     })
     .catch((error) => {
       this.setState({ error });
@@ -50,15 +63,25 @@ class App extends Component {
         return e;
       });
 
-      this.setState({ items: newItems, error: '' });
+      this.sortList(newItems)
     })
     .catch((error) => {
       this.setState({ error })
     })
   }
 
+  sortList(items) {
+    this.setState({
+      items: items.sort((a, b) => {
+        const capA = a.name.toUpperCase();
+        const capB = b.name.toUpperCase();
+        return (capA < capB) ? -1 : (capA > capB) ? 1 : 0
+      })
+    });
+  }
+
   componentDidMount() {
-    getItems(this);
+    this.getItems();
   }
 
   render() {
