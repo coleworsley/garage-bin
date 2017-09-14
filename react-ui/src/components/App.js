@@ -67,8 +67,13 @@ class App extends Component {
         <h1>Hello World</h1>
         <main>
           <GarageDoor />
-          <InputContainer postItem={this.postItem} />
-          <List items={this.state.items} handleListItemChange={this.handleListItemChange}/>
+          <InputContainer
+            postItem={this.postItem}
+          />
+          <List
+            items={this.state.items}
+            handleListItemChange={this.handleListItemChange}
+          />
         </main>
 
       </div>

@@ -12,7 +12,8 @@ export default class ListItem extends Component {
     const listItemStatus = this.state.showDetail ? 'detail' : '';
 
     return (
-      <div className={`listItem ${listItemStatus}`}>
+      <div className={`listItem ${listItemStatus}`}
+        onClick={() => this.setState({ showDetail: !this.state.showDetail })}>
         <p>{this.props.name}</p>
         <p>{this.props.description}</p>
         <select className='list-item-cleanliness'
@@ -21,13 +22,11 @@ export default class ListItem extends Component {
           onChange={(e) => this.props.handleListItemChange(
             this.props.id,
             { cleanliness: e.target.value }
-          )}
-          value={this.state.cleanliness}>
+          )}>
             <option value='Sparkling'>Sparkling</option>
             <option value='Dusty'>Dusty</option>
             <option value='Rancid'>Rancid</option>
         </select>
-        <p>{this.props.cleanliness}</p>
       </div>
     )
   }
