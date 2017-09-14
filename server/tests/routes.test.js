@@ -128,7 +128,6 @@ describe('API Routes', () => {
           cleanliness: 'Dusty',
         })
         .end((err, res) => {
-          console.log(res.body);
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.should.be.json;
@@ -139,6 +138,38 @@ describe('API Routes', () => {
           res.body.description.should.equal('No matter how you store it, it\'s one of the most useful items you can own');
           res.body.should.have.property('cleanliness');
           res.body.cleanliness.should.equal('Dusty');
+          done();
+        });
+    });
+
+    it('SADPATH should return an error id doesn\'t exist', (done) => {
+      chai.request(server)
+        .patch('/api/v1/garage/100000awewegaweg')
+        .send({
+          cleanliness: 'Rancid',
+        })
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.should.be.json;
+          res.body.should.have.property('message');
+          res.body.message.should.equal('invalid id')
+          done();
+        });
+    });
+
+    it.skip('SADPATH should return an error if the cleanliness doesn\'t exist', (done) => {
+      chai.request(server)
+        .patch('/api/v1/garage/3')
+        .send({
+          cleanliness: 'awefawefawefw',
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.should.be.a('object');
+          res.should.be.json;
+          res.body.should.have.property('error');
+          res.body.error.should.equal('description')
           done();
         });
     });
