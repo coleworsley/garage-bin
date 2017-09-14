@@ -29,7 +29,6 @@ app.get('/api/v1/garage', (req, res) => {
 })
 
 app.post('/api/v1/garage', (req, res) => {
-
   for (const requiredParam of ['name', 'description', 'cleanliness']) {
     if (!req.body[requiredParam]) {
       return res.status(422).json({
@@ -55,6 +54,21 @@ app.post('/api/v1/garage', (req, res) => {
     })
 
 })
+
+app.patch('/api/v1/garage/:id', (req, res) => {
+  db('garage')
+    .where('id', req.params.id)
+    .update(req.body, '*')
+    .then((item) => {
+      console.log(item);
+      return res.status(200).json(item[0]);
+    })
+    .catch((error) => {
+      res.status(404).json({ error });
+    })
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
