@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import GarageDoor from './GarageDoor';
+import InputContainer from './InputContainer';
+import List from './List';
 import './App.css';
 
 const initialState = {
@@ -27,6 +30,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello World</h1>
+        <main>
+          <GarageDoor />
+          <InputContainer />
+          <List items={this.state.items}/>
+        </main>
+
       </div>
     );
   }

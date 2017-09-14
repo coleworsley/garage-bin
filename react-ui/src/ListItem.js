@@ -9,13 +9,13 @@ export default class ListItem extends Component {
   }
 
   render() {
-    const listItemStatus = showDetail ? 'detail' : '';
+    const listItemStatus = this.state.showDetail ? 'detail' : '';
 
     return (
-      <div className='listItem'>
-        <p>{props.name}</p>
-        <p>{props.description}</p>
-        <p>{props.cleanliness}</p>
+      <div className={`listItem ${listItemStatus}`}>
+        <p>{this.props.name}</p>
+        <p>{this.props.description}</p>
+        <p>{this.props.cleanliness}</p>
       </div>
     )
   }

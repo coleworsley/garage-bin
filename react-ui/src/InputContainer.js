@@ -15,9 +15,6 @@ export default class InputContainer extends Component {
   }
 
   render() {
-    const { open } = this.state;
-    const garageStatus = open ? 'open' : 'closed';
-
     return (
       <div className='input-container'>
         <input id='name-input' type='text' placeholder='name'/>
