@@ -24,8 +24,39 @@ header {
   height: 80px;
 }
 
-.title {
+input,
+button,
+select {
+  font-size: 14px;
+}
+
+:focus {
+  outline:none;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(231, 231, 231, 0.9);
+  box-shadow: 2px 2px 5px rgb(31, 31, 31);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover:enabled {
+  color: rgb(228, 230, 229);
+  background-color: rgb(10, 79, 158)
+}
+
+.title,
+.input-title,
+.item-summary > * {
   color: rgb(227, 227, 227);
+}
+
+.input-title {
+  margin: 5px;
+  text-shadow: 2px 2px 5px #202020
 }
 
 main {
@@ -55,6 +86,11 @@ main,
   height: 0;
 }
 
+.garage-door-btn {
+  margin: 5px auto;
+  display: block;
+}
+
 .input-container {
   background-color: rgba(0, 10, 19, 0.7);
   display: flex;
@@ -62,10 +98,19 @@ main,
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin: 0 auto;
+  margin: 20px auto 0;
   border-radius: 5px;
   width: 100%;
+  max-height: 200px;
   max-width: 400px;
+}
+
+#name-input,
+#description-input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
 #name-input,
@@ -84,44 +129,46 @@ main,
   flex-grow: 1;
 }
 
-
 .list {
   margin: 40px auto;
   width: 100%;
   max-width: 1000px;
   min-height: 60vh;
+  max-height: calc(100vh - 395px);
+  overflow-y: scroll;
   background-color: rgba(0, 10, 19, 0.7);
   border-radius: 5px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 1fr;
+}
+
+.item-summary {
+  padding: 20px;
+}
+
+.item-summary > * {
+  margin: 5px;
+  font-weight: 300;
 }
 
 .listItem {
-  background-color: rgba(230, 230, 230, 0.5);
-  margin: 20px;
-  padding: 5px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100px;
+  background-color: rgba(230, 230, 230, 0.8);
+  border-radius: 5px;
+  margin: 10px;
   position: relative;
+  padding: 10px;
 }
 
 .detail-btn {
   position: absolute;
-  bottom: 8px;
+  top: 10px;
   right: 5px;
-}
-
-.detail-btn,
-.list-item__cleanliness {
-  width: 45%
 }
 
 .listItem > * {
   margin: 5px;
+}
+
+.list-item__name {
+  padding-right: 80px;
 }
 
 .detail-hidden .list-item__description,

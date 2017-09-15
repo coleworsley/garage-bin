@@ -23,8 +23,12 @@ export default class InputContainer extends Component {
   }
 
   render() {
+    const disabled = Object.keys(this.state)
+      .findIndex(key => this.state[key].length < 1) >= 0;
+
     return (
       <div className='input-container'>
+        <h3 className="input-title">Enter a New Item</h3>
         <input id='name-input'
           type='text'
           placeholder='name'
@@ -47,6 +51,7 @@ export default class InputContainer extends Component {
             <option value='Rancid'>Rancid</option>
           </select>
           <button id='submit-input'
+            disabled={disabled}
             onClick={() => this.handleClick()}>
             Submit
           </button>

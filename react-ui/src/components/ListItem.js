@@ -13,8 +13,8 @@ export default class ListItem extends Component {
 
     return (
       <div className={`listItem ${listItemStatus}`}>
-        <p className='list-item__name'>{this.props.name}</p>
-        <p className='list-item__description'>{this.props.description}</p>
+        <p className='list-item__name'>Name: {this.props.name}</p>
+        <p className='list-item__description'>Description: {this.props.description}</p>
         <select className='list-item__cleanliness'
           value={this.props.cleanliness}
           name='list-item-cleanliness'
