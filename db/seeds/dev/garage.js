@@ -21,7 +21,7 @@ const items = [
   },
   {
     name: 'Dustpan',
-    description: 'Really who actually cleans there garage?',
+    description: 'Really who actually cleans their garage?',
     cleanliness: 'Dusty',
   },
   {
