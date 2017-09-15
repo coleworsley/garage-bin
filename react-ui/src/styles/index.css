@@ -133,7 +133,6 @@ main,
   margin: 40px auto;
   width: 100%;
   max-width: 1000px;
-  min-height: 60vh;
   max-height: calc(100vh - 395px);
   overflow-y: scroll;
   background-color: rgba(0, 10, 19, 0.7);
