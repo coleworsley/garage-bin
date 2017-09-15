@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class GarageDoor extends Component {
   constructor() {
     super();
-    this.state = { open: true }
+    this.state = { open: false };
   }
 
   render() {

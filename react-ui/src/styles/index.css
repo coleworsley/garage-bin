@@ -29,19 +29,24 @@ button,
 select {
   font-size: 14px;
 }
+
+:focus {
+  outline:none;
+}
+
 button {
   border: none;
   border-radius: 5px;
   background-color: rgba(231, 231, 231, 0.9);
   box-shadow: 2px 2px 5px rgb(31, 31, 31);
   font-size: 14px;
+  cursor: pointer;
 }
 
-button:hover {
+button:hover:enabled {
   color: rgb(228, 230, 229);
   background-color: rgb(10, 79, 158)
 }
-
 
 .title,
 .input-title,
@@ -145,7 +150,7 @@ main,
 }
 
 .listItem {
-  background-color: rgba(230, 230, 230, 0.5);
+  background-color: rgba(230, 230, 230, 0.8);
   border-radius: 5px;
   margin: 10px;
   position: relative;
